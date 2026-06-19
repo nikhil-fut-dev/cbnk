@@ -73,7 +73,7 @@ const Home = () => {
         ) : (
           <div className="empty-products">
             <h3>No featured products yet</h3>
-            <p>Check back soon for fresh picks from ShopNest.</p>
+            <p>Check back soon for fresh picks from CBNK.</p>
             <Link to="/shop" className="btn">
               Browse shop
             </Link>

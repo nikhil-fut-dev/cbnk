@@ -111,7 +111,7 @@ const CategoryPage = ({ category }) => {
       ) : (
         <div className="empty-products">
           <h3>No {details.title.toLowerCase()} products found</h3>
-          <p>Try a different search or browse the full ShopNest collection.</p>
+          <p>Try a different search or browse the full CBNK collection.</p>
           <Link to="/shop" className="btn">
             Browse all products
           </Link>

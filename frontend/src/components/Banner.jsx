@@ -13,7 +13,7 @@ const Banner = () => {
     <section className="hero-banner">
       <div className="hero-content">
         <span className="hero-eyebrow">Curated deals, delivered fast</span>
-        <h1>Upgrade your everyday shopping with ShopNest.</h1>
+        <h1>Upgrade your everyday shopping with CBNK.</h1>
         <p>
           Discover quality products, sharp prices, and a smoother checkout
           experience built for modern shoppers.

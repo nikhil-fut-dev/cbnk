@@ -42,8 +42,8 @@ const Navbar = () => {
     <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-brand">
         <Link to="/" onClick={closeMenu}>
-          <img src="/ShopNestLogo.png" alt="ShopNest" className="navbar-logo" />
-          <span>ShopNest</span>
+          <img src="/ShopNestLogo.png" alt="CBNK" className="navbar-logo" />
+          <span>CBNK</span>
         </Link>
       </div>
 
