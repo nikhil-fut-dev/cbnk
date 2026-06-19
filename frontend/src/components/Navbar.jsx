@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useSelector } from "react-redux";
 import "../styles/navbar.css";
@@ -8,11 +8,22 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const categories = [
+    { label: "Electronics", path: "/electronics" },
+    { label: "Fashion", path: "/fashion" },
+    { label: "Home", path: "/home-category" },
+    { label: "Accessories", path: "/accessories" },
+  ];
 
   const totalCartItems = cartItems.reduce(
     (total, item) => total + (item.quantity || 1),
     0
+  );
+  const isCategoryActive = categories.some(
+    (category) => category.path === location.pathname
   );
 
   const handleLogout = () => {
@@ -60,25 +71,28 @@ const Navbar = () => {
               Shop
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/electronics" onClick={closeMenu}>
-              Electronics
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/fashion" onClick={closeMenu}>
-              Fashion
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/home-category" onClick={closeMenu}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/accessories" onClick={closeMenu}>
-              Accessories
-            </NavLink>
+          <li className="navbar-category">
+            <button
+              className={`category-trigger ${
+                isCategoryActive ? "is-active" : ""
+              }`}
+              type="button"
+              aria-haspopup="true"
+            >
+              Categories
+              <span className="chevron" aria-hidden="true" />
+            </button>
+            <div className="category-menu">
+              {categories.map((category) => (
+                <NavLink
+                  to={category.path}
+                  key={category.path}
+                  onClick={closeMenu}
+                >
+                  {category.label}
+                </NavLink>
+              ))}
+            </div>
           </li>
           <li>
             <NavLink to="/about" onClick={closeMenu}>
@@ -106,7 +120,7 @@ const Navbar = () => {
             <span className="cart-icon" aria-hidden="true">
               <span />
             </span>
-            <span>Cart</span>
+            <span className="cart-label">Cart</span>
             {totalCartItems > 0 && (
               <span className="cart-count">{totalCartItems}</span>
             )}
@@ -122,7 +136,10 @@ const Navbar = () => {
                 <span className="user-avatar" aria-hidden="true">
                   {user.name?.charAt(0).toUpperCase() || "U"}
                 </span>
-                <span className="user-name">{user.name}</span>
+                <span className="user-meta">
+                  <span className="user-label">Account</span>
+                  <span className="user-name">{user.name}</span>
+                </span>
               </NavLink>
               <button onClick={handleLogout} className="btn-logout">
                 Logout
