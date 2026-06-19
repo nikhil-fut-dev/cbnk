@@ -3,6 +3,10 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useSelector } from "react-redux";
 import "../styles/navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -20,10 +24,10 @@ const Navbar = () => {
 
   const totalCartItems = cartItems.reduce(
     (total, item) => total + (item.quantity || 1),
-    0
+    0,
   );
   const isCategoryActive = categories.some(
-    (category) => category.path === location.pathname
+    (category) => category.path === location.pathname,
   );
 
   const handleLogout = () => {
@@ -38,11 +42,7 @@ const Navbar = () => {
     <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-brand">
         <Link to="/" onClick={closeMenu}>
-          <img
-            src="/ShopNestLogo.png"
-            alt="ShopNest"
-            className="navbar-logo"
-          />
+          <img src="/ShopNestLogo.png" alt="ShopNest" className="navbar-logo" />
           <span>ShopNest</span>
         </Link>
       </div>
@@ -117,8 +117,8 @@ const Navbar = () => {
             }`}
             onClick={closeMenu}
           >
-            <span className="cart-icon" aria-hidden="true">
-              <span />
+            <span>
+              <FontAwesomeIcon icon={faCartShopping} />
             </span>
             <span className="cart-label">Cart</span>
             {totalCartItems > 0 && (
