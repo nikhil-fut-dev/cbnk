@@ -6,7 +6,12 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const categories = ["Electronics", "Fashion", "Home", "Accessories"];
+  const categories = [
+    { name: "Electronics", path: "/electronics" },
+    { name: "Fashion", path: "/fashion" },
+    { name: "Home", path: "/home-category" },
+    { name: "Accessories", path: "/accessories" },
+  ];
   const benefits = [
     { value: "24h", label: "Fast dispatch" },
     { value: "4.8", label: "Customer rating" },
@@ -77,8 +82,8 @@ const Home = () => {
 
       <section className="category-strip" aria-label="Popular categories">
         {categories.map((category) => (
-          <Link to="/shop" className="category-pill" key={category}>
-            {category}
+          <Link to={category.path} className="category-pill" key={category.name}>
+            {category.name}
           </Link>
         ))}
       </section>

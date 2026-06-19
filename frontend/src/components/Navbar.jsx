@@ -61,6 +61,26 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/electronics" onClick={closeMenu}>
+              Electronics
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/fashion" onClick={closeMenu}>
+              Fashion
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/home-category" onClick={closeMenu}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/accessories" onClick={closeMenu}>
+              Accessories
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/about" onClick={closeMenu}>
               About
             </NavLink>
